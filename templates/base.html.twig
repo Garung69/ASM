@@ -43,16 +43,16 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Student</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Add Student</a>
-          <a class="dropdown-item" href="#">View all</a>
+          <a class="dropdown-item" href="{{ path('student_index') }}">Add Student</a>
+          <a class="dropdown-item" href="{{ path('student_add') }}">View all</a>
         </div>
       </li>
 	        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Teacher</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Add Teacher</a>
-          <a class="dropdown-item" href="#">View all</a>
+          <a class="dropdown-item" href="{{ path('teacher_index') }}">Add Teacher</a>
+          <a class="dropdown-item" href="{{ path('teacher_add') }}">View all</a>
         </div>
       </li>
 
@@ -61,16 +61,16 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Subject</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Add Subject</a>
-          <a class="dropdown-item" href="#">View all</a>
+          <a class="dropdown-item" href="{{ path('subject_index') }}">Add Subject</a>
+          <a class="dropdown-item" href="{{ path('subject_add') }}">View all</a>
         </div>
       </li>
 	      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Category</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Add Category</a>
-          <a class="dropdown-item" href="#">View all</a>
+          <a class="dropdown-item" href="{{ path('category_index') }}">Add Category</a>
+          <a class="dropdown-item" href="{{ path('category_add') }}">View all</a>
         </div>
       </li>
 	  <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>

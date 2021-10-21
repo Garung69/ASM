@@ -20,11 +20,16 @@
             <td>{{ subject.id }}</td>
             <td>{{ subject.name }}</td>
             <td>
+            {% if is_granted('ROLE_ADMIN') %}
+
                <a class="btn btn-info" href="{{ path('subject_detail', {'id' : subject.id }) }}">DETAIL</a>
                <a class="btn btn-primary" href="{{ path('subject_edit', {'id': subject.id }) }}">EDIT</a>
                <a class="btn btn-warning" href="{{ path('subject_delete', {'id': subject.id }) }}"
                onclick="return confirm('Are you sure to delete this subject ?')">
                DELETE</a>
+            {% else %}
+               <a class="btn btn-info" href="{{ path('subject_detail', {'id' : subject.id }) }}">DETAIL</a>
+            {% endif %}
             </td>
          </tr>
       {% endfor %}     
