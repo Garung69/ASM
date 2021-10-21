@@ -25,7 +25,9 @@ class SubjectController extends AbstractController
             ]
         );
     }
-
+/**
+ * @IsGranted("ROLE_ADMIN")
+ */
     #[Route('/subject/detail/{id}',name:'subject_detail')]
     public function SubjectDetail($id)
     {

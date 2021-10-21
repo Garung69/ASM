@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
-
+{% block nav %} {% endblock %}
 {% block body %}
-<form method="post">
+<div class="container text-center" style="width: 20%; padding-top: 50px; border: 1px solid #ccc; border-radius: 15px;">
+<img width="270" height="150"src="https://scontent-xsp1-3.xx.fbcdn.net/v/t1.15752-9/244755782_408826867533277_7313810513688525429_n.png?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=eTi9DN9AOoMAX95lpXr&_nc_ht=scontent-xsp1-3.xx&oh=2105ec8befc13a77b3eb937d8e197972&oe=619710AD" alt="">
+
+<form method="post" >
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -39,4 +42,7 @@
         Sign in
     </button>
 </form>
+<a class="nav-link" href="{{ path('app_register') }}">Don't have account? Register Now!</a>
+</div>
+
 {% endblock %}
