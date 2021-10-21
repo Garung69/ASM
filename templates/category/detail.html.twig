@@ -4,30 +4,36 @@
 
 {% block body %}
 <div class="container">
-   <h4 class="text-primary text-center">Category List</h4>
-   <a class="btn btn-outline-primary" href="{{ path('category_add') }}">ADD Category</a>
+   <h4 class="text-primary text-center">category List</h4>
+   <a class="btn btn-outline-primary" href="{{ path('category_add') }}">ADD category</a>
    <table class="table table-striped text-center">
       <thead>
          <tr>
-            <th>ID</th>
+           
             <th>Name</th>
+            <th>Description</th>
+            <th>Subjects</th>
+           
+           
             <th>Actions</th>
          </tr>
       </thead>
       <tbody>
-      {% for category in categories %}
+    
           <tr>
-            <td>{{ category.id }}</td>
+            
             <td>{{ category.name }}</td>
+            <td>{{category.description}}</td>
+            <td></td>
             <td>
-               <a class="btn btn-info" href="{{ path('category_detail', {'id' : category.id }) }}">DETAIL</a>
+               
                <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id }) }}">EDIT</a>
                <a class="btn btn-warning" href="{{ path('category_delete', {'id': category.id }) }}"
                onclick="return confirm('Are you sure to delete this category ?')">
                DELETE</a>
             </td>
          </tr>
-      {% endfor %}     
+       
       </tbody>
    </table>
 </div>
