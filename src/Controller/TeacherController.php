@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Teacher;
+use PhpParser\Node\Name;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -53,6 +55,18 @@ class TeacherController extends AbstractController
             $this->addFlash('Success', 'Teacher has been deleted successfully !');
         }
         return $this->redirectToRoute('teacher_index');
+    }
+
+    #[Route('/teacher/edit/{id}', name: 'teacher_edit')]
+    public function teacherEdit(Request $request ,$id)
+    {
+
+    }
+
+    #[Route('/teacher/add', name: 'teacher_add')]
+    public function teacherAdd(Request $request)
+    {
+        
     }
 
 
