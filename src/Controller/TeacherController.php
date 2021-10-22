@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Teacher;
+use App\Form\TeacherType;
 use PhpParser\Node\Name;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,13 +61,50 @@ class TeacherController extends AbstractController
     #[Route('/teacher/edit/{id}', name: 'teacher_edit')]
     public function teacherEdit(Request $request ,$id)
     {
+        $teacher = $this->getDoctrine()->getRepository(Teacher::class)->find($id);
+        $form = $this->createForm(TeacherType::class,$teacher);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($teacher);
+            $manager->flush();
+
+            $this->addFlash("Success", "Edit teacher successfully !");
+            return $this->redirectToRoute('subject_index');
+        }
+
+        return $this->render(
+            "teacher/edit.html.twig", 
+            [
+                "form" => $form->createView()
+            ]
+        );
 
     }
 
     #[Route('/teacher/add', name: 'teacher_add')]
     public function teacherAdd(Request $request)
     {
-        
+        $teacher = new Teacher();
+        $form = $this->createForm(TeacherType::class,$teacher);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($teacher);
+            $manager->flush();
+
+            $this->addFlash("Success", "Add new Teacher successfully !");
+            return $this->redirectToRoute('subject_index');
+        }
+
+        return $this->render(
+            "teacher/add.html.twig", 
+            [
+                "form" => $form->createView()
+            ]
+        );
     }
 
 

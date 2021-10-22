@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Edit Teacher {% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-3">
+   <h2 class="text-center mt-2">Edit Teacher</h2>
+   <div class="col-md-6"></div>
+      {{ form_start (form) }}
+        
+
+          <div class="form-group">
+            {{ form_label (form.name) }}
+            {{ form_widget (form.name,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+
+          <div class="form-group">
+            {{ form_label (form.email) }}
+            {{ form_widget (form.email,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+
+          <div class="form-group">
+            {{ form_label (form.phone) }}
+            {{ form_widget (form.phone,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group">
+            {{ form_label (form.dob) }}
+            {{ form_widget (form.dob,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         
+         <div class="form-group text-center mt-3">
+            <button class="btn btn-primary" type="submit">Edit</button>
+         </div>
+      {{ form_end (form) }}
+   </div>
+</div>
+
+{% endblock %}

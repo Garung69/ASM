@@ -9,25 +9,34 @@
    <table class="table table-striped text-center">
       <thead>
          <tr>
-            <th>ID</th>
+           
             <th>Name</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>DoB</th>
+           <th>Subject</th>
+           
             <th>Actions</th>
          </tr>
       </thead>
       <tbody>
-      {% for teacher in teachers %}
+    
           <tr>
-            <td>{{ teacher.id }}</td>
+            
             <td>{{ teacher.name }}</td>
+            <td>{{teacher.email}}</td>
+            <td>{{teacher.phone}}</td>
+            <td>{{ teacher.dob|date('d/m/Y') }}</td>           
+            <td></td>
             <td>
-               <a class="btn btn-info" href="{{ path('teacher_detail', {'id' : teacher.id }) }}">DETAIL</a>
+               
                <a class="btn btn-primary" href="{{ path('teacher_edit', {'id': teacher.id }) }}">EDIT</a>
                <a class="btn btn-warning" href="{{ path('teacher_delete', {'id': teacher.id }) }}"
                onclick="return confirm('Are you sure to delete this teacher ?')">
                DELETE</a>
             </td>
          </tr>
-      {% endfor %}     
+       
       </tbody>
    </table>
 </div>
