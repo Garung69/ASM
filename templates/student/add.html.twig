@@ -1,0 +1,81 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Add Student {% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-3">
+   <h2 class="text-center mt-2">ADD Student</h2>
+   <div class="col-md-6"></div>
+      {{ form_start (form) }}
+         <div class="form-group">
+            {{ form_label (form.name) }}
+            {{ form_widget (form.name,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group">
+            {{ form_label (form.dob) }}
+            {{ form_widget (form.dob,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group">
+            {{ form_label (form.loaction) }}
+            {{ form_widget (form.nationality,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group">
+            {{ form_label (form.major) }}
+            {{ form_widget (form.major,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group">
+            {{ form_label (form.image) }}
+            {{ form_widget (form.image,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group">
+            {{ form_label (form.email) }}
+            {{ form_widget (form.email,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group">
+            {{ form_label (form.phone) }}
+            {{ form_widget (form.phone,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group">
+            {{ form_label (form.subjects) }}
+            {{ form_widget (form.subjects,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group text-center mt-3">
+            <button class="btn btn-primary" type="submit">ADD</button>
+         </div>
+      {{ form_end (form) }}
+   </div>
+</div>
+
+{% endblock %}
