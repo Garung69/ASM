@@ -8,9 +8,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class CategoryController extends AbstractController
 {
+    /**
+    * @IsGranted("ROLE_USER")
+    */
     #[Route('/category', name: 'category_index')]
     public function categoryIndex(){
         $categories = $this ->getDoctrine()->getRepository(Category :: class)->findAll();
@@ -21,7 +25,9 @@ class CategoryController extends AbstractController
             ]
             );
     }
-
+    /**
+    * @IsGranted("ROLE_USER")
+    */
     #[Route('/category/detail/{id}',name:'category_detail')]
     public function categoryDetail($id){
         $category = $this->getDoctrine()->getRepository(Category :: class)->find($id);
@@ -37,7 +43,9 @@ class CategoryController extends AbstractController
             );
         }
     }
-
+    /**
+    * @IsGranted("ROLE_ADMIN")
+    */
     #[Route('/category/delete/{id}', name:'category_delete')]
     public function categoryDelete($id)
     {
@@ -53,7 +61,9 @@ class CategoryController extends AbstractController
         return $this->redirectToRoute('category_index');
     }
 
-
+    /**
+    * @IsGranted("ROLE_ADMIN")
+    */
     #[Route('/category/edit/{id}',name:'category_edit')]
     public function categoryEdit(Request $request,$id){
         $category = $this->getDoctrine()->getRepository(Category::class)->find($id);
@@ -79,7 +89,9 @@ class CategoryController extends AbstractController
     }
 
 
-
+    /**
+    * @IsGranted("ROLE_ADMIN")
+    */
     #[Route('/category/add',name:'category_add')]
     public function categoryAdd(Request $request){
         $category = new Category();

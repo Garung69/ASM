@@ -12,7 +12,10 @@
             <th>Name</th>
             <th>Description</th>
             <th>Subjects</th>           
+            {% if is_granted('ROLE_ADMIN') %}
             <th>Actions</th>
+            {% else %}
+            {% endif %}
          </tr>
       </thead>
       <tbody>
@@ -22,11 +25,13 @@
             <td>{{category.description}}</td>
             <td></td>
             <td>
-               
+            {% if is_granted('ROLE_ADMIN') %}
                <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id }) }}">EDIT</a>
                <a class="btn btn-warning" href="{{ path('category_delete', {'id': category.id }) }}"
-               onclick="return confirm('Are you sure to delete this category ?')">
+               onclick="return confirm('Are you sure to delete this Category ?')">
                DELETE</a>
+            {% else %}
+            {% endif %}
             </td>
          </tr>
        

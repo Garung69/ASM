@@ -44,16 +44,23 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Student</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="{{ path('student_index') }}">Add Student</a>
-          <a class="dropdown-item" href="{{ path('student_add') }}">View all</a>
+            {% if is_granted('ROLE_ADMIN') %}
+            <a class="dropdown-item" href="{{ path('student_add') }}">Add Student</a>
+            {% else %}
+            {% endif %}
+          <a class="dropdown-item" href="{{ path('student_index') }}">View all</a>
         </div>
       </li>
 	        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Teacher</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="{{ path('teacher_index') }}">Add Teacher</a>
-          <a class="dropdown-item" href="{{ path('teacher_add') }}">View all</a>
+            {% if is_granted('ROLE_ADMIN') %}
+            <a class="dropdown-item" href="{{ path('teacher_add') }}">Add Teacher</a>
+            {% else %}
+            {% endif %}
+          
+          <a class="dropdown-item" href="{{ path('teacher_index') }}">View all</a>
         </div>
       </li>
 
@@ -62,16 +69,24 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Subject</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="{{ path('subject_index') }}">Add Subject</a>
-          <a class="dropdown-item" href="{{ path('subject_add') }}">View all</a>
+            {% if is_granted('ROLE_ADMIN') %}
+            <a class="dropdown-item" href="{{ path('subject_add') }}">Add Subject</a>
+            {% else %}
+            {% endif %}
+          
+          <a class="dropdown-item" href="{{ path('subject_index') }}">View all</a>
         </div>
       </li>
 	      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Category</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="{{ path('category_index') }}">Add Category</a>
-          <a class="dropdown-item" href="{{ path('category_add') }}">View all</a>
+            {% if is_granted('ROLE_ADMIN') %}
+            <a class="dropdown-item" href="{{ path('category_add') }}">Add Category</a>
+            {% else %}
+            {% endif %}
+          
+          <a class="dropdown-item" href="{{ path('category_index') }}">View all</a>
         </div>
       </li>
 	  <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
