@@ -20,11 +20,16 @@
             <td>{{ student.id }}</td>
             <td>{{ student.name }}</td>
             <td>
+            {% if is_granted('ROLE_ADMIN') %}
+
                <a class="btn btn-info" href="{{ path('student_detail', {'id' : student.id }) }}">DETAIL</a>
                <a class="btn btn-primary" href="{{ path('student_edit', {'id': student.id }) }}">EDIT</a>
                <a class="btn btn-warning" href="{{ path('student_delete', {'id': student.id }) }}"
                onclick="return confirm('Are you sure to delete this student ?')">
                DELETE</a>
+            {% else %}
+               <a class="btn btn-info" href="{{ path('student_detail', {'id' : student.id }) }}">DETAIL</a>
+            {% endif %}
             </td>
          </tr>
       {% endfor %}     

@@ -7,8 +7,13 @@ use App\Form\SubjectType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
+/**
+ * @IsGranted("ROLE_USER")
+ */
 class SubjectController extends AbstractController
 {
     #[Route('/subject', name: 'subject_index')]
@@ -22,7 +27,9 @@ class SubjectController extends AbstractController
             ]
         );
     }
-
+/**
+ * @IsGranted("ROLE_USER")
+ */
     #[Route('/subject/detail/{id}',name:'subject_detail')]
     public function SubjectDetail($id)
     {
@@ -41,6 +48,7 @@ class SubjectController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/subject/delete/{id}", name = "subject_delete")
      */
     public function subjectDelete($id)
@@ -58,6 +66,7 @@ class SubjectController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/subject/add", name = "subject_add")
      */
     public function subjectAdd(Request $request){
@@ -83,6 +92,7 @@ class SubjectController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/subject/edit/{id}", name = "subject_edit")
      */
     public function subjectEdit(Request $request , $id){

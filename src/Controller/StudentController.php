@@ -10,11 +10,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 use function PHPUnit\Framework\throwException;
 
 class StudentController extends AbstractController
 {
+    /**
+    * @IsGranted("ROLE_USER")
+    */
     #[Route('/student', name: 'student_index')]
     public function studentindex(): Response
     {
@@ -26,7 +30,9 @@ class StudentController extends AbstractController
         ]
     );
     }
-
+    /**
+   * @IsGranted("ROLE_USER")
+    */
     #[Route('/student/detail/{id}',name:'student_detail')]
     public function studentDetail($id)
     {
@@ -46,6 +52,7 @@ class StudentController extends AbstractController
     }
 
      /**
+      * @IsGranted("ROLE_ADMIN")
      * @Route("/student/delete/{id}", name = "student_delete")
      */
     public function studentDelete($id)
@@ -150,9 +157,9 @@ class StudentController extends AbstractController
                 ]
             );
 
-        }
-
+    }
     
+
 
 
 }

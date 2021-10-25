@@ -21,11 +21,16 @@
            <td>{{ category.id }}</td>
             <td>{{ category.name }}</td>
             <td>
+            {% if is_granted('ROLE_ADMIN') %}
+
                <a class="btn btn-info" href="{{ path('category_detail', {'id' : category.id }) }}">DETAIL</a>
                <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id }) }}">EDIT</a>
                <a class="btn btn-warning" href="{{ path('category_delete', {'id': category.id }) }}"
                onclick="return confirm('Are you sure to delete this category ?')">
                DELETE</a>
+            {% else %}
+               <a class="btn btn-info" href="{{ path('category_detail', {'id' : category.id }) }}">DETAIL</a>
+            {% endif %}
             </td>
          </tr>
       {% endfor %}     
