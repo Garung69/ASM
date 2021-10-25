@@ -4,9 +4,10 @@ namespace App\Form;
 
 use App\Entity\Student;
 use App\Entity\Subject;
-use phpDocumentor\Reflection\PseudoTypes\True_;
 use Symfony\Component\Form\AbstractType;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -20,7 +21,7 @@ class StudentType extends AbstractType
             ->add('name',TextType :: class,
             [
                 'required'=>true,  // k dc null
-                'lable' =>"Student Name"
+                'label' =>"Student Name"
             ])
             ->add('dob',DateType::class,
             [
@@ -30,28 +31,28 @@ class StudentType extends AbstractType
             ->add('location',TextType :: class,
             [
                 'required'=>true,
-                'lable' =>"Location"
+                'label' =>"Location"
             ])
             ->add('major',TextType :: class,
             [
                 'required'=>true,
-                'lable' =>"Major"
+                'label' =>"Major"
             ])
             ->add('image',FileType:: class,
             [
                 'label'=>"Image",
                 'data_class'=> null, 
-                'required' => is_null($builder->getData()->getImage())
+                'required' => false
             ])
             ->add('email',TextType :: class,
             [
                 'required'=>true,
-                'lable' =>"Email"
+                'label' =>"Email"
             ])
             ->add('phone',TextType :: class,
             [
                 'required'=>true,
-                'lable' =>"PhoneNumber"
+                'label' =>"PhoneNumber"
             ])
             ->add('subjects',EntityType::class,
             [

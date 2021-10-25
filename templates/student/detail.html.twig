@@ -30,7 +30,9 @@
             <td>{{ student.dob|date('d/m/Y') }}</td>  
             <td>{{student.location}}</td>
             <td>{{student.major}}</td>
-            <td></td>
+            <td>
+						<img src="{{ asset('images/student/'~student.image) }}" alt="student image" width="100" height="120">
+					</td>
             <td>{{student.email}}</td>
             <td>{{student.phone}}</td>
 
