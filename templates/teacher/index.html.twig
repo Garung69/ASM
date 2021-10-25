@@ -4,14 +4,16 @@
 
 {% block body %}
 <div class="container">
-   <h4 class="text-primary text-center">teacher List</h4>
+   <h2 class="text-dark text-center">TEACHER LIST</h2>
    <a class="btn btn-outline-primary" href="{{ path('teacher_add') }}">ADD teacher</a>
-   <table class="table table-striped text-center">
-      <thead>
+   <table class="table  text-center">
+      <thead class="thead-dark">
          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Actions</th>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Student Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Actions</th>
          </tr>
       </thead>
       <tbody>
@@ -19,16 +21,18 @@
           <tr>
             <td>{{ teacher.id }}</td>
             <td>{{ teacher.name }}</td>
+            <td>{{ teacher.email }}</td>
+            <td>{{ teacher.phone }}</td>
             <td>
             {% if is_granted('ROLE_ADMIN') %}
 
-               <a class="btn btn-info" href="{{ path('teacher_detail', {'id' : teacher.id }) }}">DETAIL</a>
-               <a class="btn btn-primary" href="{{ path('teacher_edit', {'id': teacher.id }) }}">EDIT</a>
-               <a class="btn btn-warning" href="{{ path('teacher_delete', {'id': teacher.id }) }}"
+               <a class="btn btn-success" href="{{ path('teacher_detail', {'id' : teacher.id }) }}">DETAIL</a>
+               <a class="btn btn-info" href="{{ path('teacher_edit', {'id': teacher.id }) }}">EDIT</a>
+               <a class="btn btn-danger" href="{{ path('teacher_delete', {'id': teacher.id }) }}"
                onclick="return confirm('Are you sure to delete this teacher ?')">
                DELETE</a>
             {% else %}
-               <a class="btn btn-info" href="{{ path('teacher_detail', {'id' : teacher.id }) }}">DETAIL</a>
+               <a class="btn btn-success" href="{{ path('teacher_detail', {'id' : teacher.id }) }}">DETAIL</a>
             {% endif %}
             </td>
          </tr>
