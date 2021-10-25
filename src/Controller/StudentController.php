@@ -155,10 +155,6 @@ class StudentController extends AbstractController
         //     //B6: lưu tên ảnh vào database
         //     $student->getImage($imageName);
 
-        //     //đẩy dữ liệu nhập từ form vào database
-        //     $manager = $this->getDoctrine()->getManager();
-        //     $manager->persist($student);
-        //     $manager->flush();
 
         //     //hiển thị thông báo và chuyển hướng website
         //     $this->addFlash('Success', "Add new student successfully !");
@@ -171,7 +167,7 @@ class StudentController extends AbstractController
         //         "form" => $form->createView()
         //     ]
         // );
-        
+    
     }
 
 
