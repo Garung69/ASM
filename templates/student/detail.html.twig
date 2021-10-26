@@ -4,20 +4,19 @@
 
 {% block body %}
 <div class="container">
-   <h4 class="text-primary text-center">student List</h4>
+   <h2 class="text-dark text-center">STUDENT DETAIL</h2>
    <a class="btn btn-outline-primary" href="{{ path('student_add') }}">ADD student</a>
-   <table class="table table-striped text-center">
-      <thead>
+   <table class="table text-center">
+      <thead class="thead-dark">
          <tr>
-           
-            <th>Name</th>         
-            <th>DoB</th>
-           <th>Location</th>
-           <th>major</th>
-           <th>image</th>
-           <th>Email</th>
-           <th>PhoneNumber</th>
-           <th>Subject</th>
+            <th scope="col">Name</th>         
+            <th scope="col">DoB</th>
+           <th scope="col">Location</th>
+           <th scope="col">Major</th>
+           <th scope="col">Image</th>
+           <th scope="col">Email</th>
+           <th scope="col">PhoneNumber</th>
+           <th scope="col">Subject</th>
             {% if is_granted('ROLE_ADMIN') %}
             <th>Actions</th>
             {% else %}
@@ -25,9 +24,7 @@
          </tr>
       </thead>
       <tbody>
-    
-          <tr>
-            
+          <tr>         
             <td>{{ student.name }}</td>
             <td>{{ student.dob|date('d/m/Y') }}</td>  
             <td>{{student.location}}</td>
@@ -37,12 +34,17 @@
 				</td>
             <td>{{student.email}}</td>
             <td>{{student.phone}}</td>
-
-            <td></td>
+            <td>
+						{% for a in student.subjects %}
+							<a href="{{ path('subject_detail', {'id': a.id }) }}">
+								{{ a.name }}
+							</a>						
+						{% endfor %}
+					</td>
             <td>
             {% if is_granted('ROLE_ADMIN') %}
-               <a class="btn btn-primary" href="{{ path('student_edit', {'id': student.id }) }}">EDIT</a>
-               <a class="btn btn-warning" href="{{ path('student_delete', {'id': student.id }) }}"
+               <a class="btn btn-info" href="{{ path('student_edit', {'id': student.id }) }}">EDIT</a>
+               <a class="btn btn-danger" href="{{ path('student_delete', {'id': student.id }) }}"
                onclick="return confirm('Are you sure to delete this student ?')">
                DELETE</a>
             {% else %}

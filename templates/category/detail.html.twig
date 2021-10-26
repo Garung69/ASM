@@ -4,30 +4,33 @@
 
 {% block body %}
 <div class="container">
-   <h4 class="text-primary text-center">category List</h4>
-   <a class="btn btn-outline-primary" href="{{ path('category_add') }}">ADD category</a>
-   <table class="table table-striped text-center">
-      <thead>
+   <h2 class="text-dark text-center">CATEGORY DETAIL</h2>
+   <a class="btn btn-outline-dark" href="{{ path('category_add') }}">ADD category</a>
+   <table class="table text-center">
+      <thead class="thead-dark">
          <tr>           
             <th>Name</th>
             <th>Description</th>
-            <th>Subjects</th>           
-            {% if is_granted('ROLE_ADMIN') %}
+            <th>Subjects</th>                     
             <th>Actions</th>
-            {% else %}
-            {% endif %}
          </tr>
       </thead>
-      <tbody>
-    
+      <tbody> 
           <tr>            
             <td>{{ category.name }}</td>
             <td>{{category.description}}</td>
-            <td></td>
+            <td>
+						{% for a in category.subjects %}
+							<a href="{{ path('subject_detail', {'id': a.id }) }}">
+								{{ a.name }}
+							</a>
+							<br>
+						{% endfor %}
+					</td> 
             <td>
             {% if is_granted('ROLE_ADMIN') %}
-               <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id }) }}">EDIT</a>
-               <a class="btn btn-warning" href="{{ path('category_delete', {'id': category.id }) }}"
+               <a class="btn btn-info" href="{{ path('category_edit', {'id': category.id }) }}">EDIT</a>
+               <a class="btn btn-danger" href="{{ path('category_delete', {'id': category.id }) }}"
                onclick="return confirm('Are you sure to delete this Category ?')">
                DELETE</a>
             {% else %}

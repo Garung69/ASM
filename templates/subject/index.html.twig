@@ -4,14 +4,14 @@
 
 {% block body %}
 <div class="container">
-   <h4 class="text-primary text-center">Subject List</h4>
-   <a class="btn btn-outline-primary" href="{{ path('subject_add') }}">ADD subject</a>
-   <table class="table table-striped text-center">
-      <thead>
+   <h2 class="text-dark text-center">SUBJECT LIST</h2>
+   <a class="btn btn-outline-dark" href="{{ path('subject_add') }}">ADD subject</a>
+   <table class="table text-center">
+      <thead class="thead-dark">
          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Actions</th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Actions</th>
          </tr>
       </thead>
       <tbody>
@@ -22,13 +22,13 @@
             <td>
             {% if is_granted('ROLE_ADMIN') %}
 
-               <a class="btn btn-info" href="{{ path('subject_detail', {'id' : subject.id }) }}">DETAIL</a>
-               <a class="btn btn-primary" href="{{ path('subject_edit', {'id': subject.id }) }}">EDIT</a>
-               <a class="btn btn-warning" href="{{ path('subject_delete', {'id': subject.id }) }}"
+               <a class="btn btn-success" href="{{ path('subject_detail', {'id' : subject.id }) }}">DETAIL</a>
+               <a class="btn btn-info" href="{{ path('subject_edit', {'id': subject.id }) }}">EDIT</a>
+               <a class="btn btn-danger" href="{{ path('subject_delete', {'id': subject.id }) }}"
                onclick="return confirm('Are you sure to delete this subject ?')">
                DELETE</a>
             {% else %}
-               <a class="btn btn-info" href="{{ path('subject_detail', {'id' : subject.id }) }}">DETAIL</a>
+               <a class="btn btn-success" href="{{ path('subject_detail', {'id' : subject.id }) }}">DETAIL</a>
             {% endif %}
             </td>
          </tr>

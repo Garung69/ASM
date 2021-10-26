@@ -4,36 +4,42 @@
 
 {% block body %}
 <div class="container">
-   <h4 class="text-primary text-center">student List</h4>
-   <a class="btn btn-outline-primary" href="{{ path('student_add') }}">ADD student</a>
-   <table class="table table-striped text-center">
-      <thead>
-         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Actions</th>
-         </tr>
-      </thead>
-      <tbody>
-      {% for student in students %}
+   <h2 class="text-dark text-center">STUDENT LIST</h2>
+   <a class="btn btn-outline-dark" href="{{ path('student_add') }}">ADD student</a>
+<table class="table text-center">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Student Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Major</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for student in students %}
           <tr>
             <td>{{ student.id }}</td>
             <td>{{ student.name }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.phone }}</td>
+            <td>{{ student.major }}</td>
             <td>
             {% if is_granted('ROLE_ADMIN') %}
 
-               <a class="btn btn-info" href="{{ path('student_detail', {'id' : student.id }) }}">DETAIL</a>
-               <a class="btn btn-primary" href="{{ path('student_edit', {'id': student.id }) }}">EDIT</a>
-               <a class="btn btn-warning" href="{{ path('student_delete', {'id': student.id }) }}"
+               <a class="btn btn-success" href="{{ path('student_detail', {'id' : student.id }) }}">DETAIL</a>
+               <a class="btn btn-info" href="{{ path('student_edit', {'id': student.id }) }}">EDIT</a>
+               <a class="btn btn-danger" href="{{ path('student_delete', {'id': student.id }) }}"
                onclick="return confirm('Are you sure to delete this student ?')">
                DELETE</a>
             {% else %}
-               <a class="btn btn-info" href="{{ path('student_detail', {'id' : student.id }) }}">DETAIL</a>
+               <a class="btn btn-success" href="{{ path('student_detail', {'id' : student.id }) }}">DETAIL</a>
             {% endif %}
             </td>
          </tr>
-      {% endfor %}     
-      </tbody>
-   </table>
+      {% endfor %}
+  </tbody>
+</table>
 </div>
 {% endblock %}

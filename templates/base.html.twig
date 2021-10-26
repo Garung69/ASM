@@ -11,6 +11,7 @@
 		           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
 			<!-- CSS only -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 		{% endblock %}
 
@@ -24,22 +25,86 @@
 		{% block nav %}
 <div>
 		<!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary container">
-
-  <!-- Navbar brand -->
-  <a class="navbar-brand" href="#">Student Managements System</a>
-
-  <!-- Collapse button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="">Student Managements System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">   
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Manage Student
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% if is_granted('ROLE_ADMIN') %}
+            <a class="dropdown-item" href="{{ path('student_add') }}">Add Student</a>
+            {% else %}
+            {% endif %}
+          <a class="dropdown-item" href="{{ path('student_index') }}">View all</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Manage Teacher
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% if is_granted('ROLE_ADMIN') %}
+            <a class="dropdown-item" href="{{ path('teacher_add') }}">Add Teacher</a>
+            {% else %}
+            {% endif %}
+          
+          <a class="dropdown-item" href="{{ path('teacher_index') }}">View all</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Manage Subject
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="dropdown-item" href="{{ path('subject_add') }}">Add Subject</a>
+            {% else %}
+            {% endif %}
+          
+          <a class="dropdown-item" href="{{ path('subject_index') }}">View all</a>
+          </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Manage Category
+        </a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+            {% if is_granted('ROLE_ADMIN') %}
+            <a class="dropdown-item" href="{{ path('category_add') }}">Add Category</a>
+            {% else %}
+            {% endif %}
+          
+          <a class="dropdown-item" href="{{ path('category_index') }}">View all</a>
+        </div>
+      </li>
+      <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+    </ul>
+  </div>
+</nav>
+
+  <!-- Navbar brand -->
+  <!--a class="navbar-brand" href="#">Student Managements System</a-->
+
+  <!-- Collapse button -->
+  {# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> #}
 
   <!-- Collapsible content -->
-  <div class="collapse navbar-collapse" id="basicExampleNav">
+  {# <div class="collapse navbar-collapse" id="basicExampleNav"> #}
 
     <!-- Links -->
-    <ul class="navbar-nav mr-auto">
+    <!--ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Student</a>
@@ -62,10 +127,10 @@
           
           <a class="dropdown-item" href="{{ path('teacher_index') }}">View all</a>
         </div>
-      </li>
+      </li-->
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown">
+      <!--li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Subject</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
@@ -90,7 +155,7 @@
         </div>
       </li>
 	  <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
-    </ul>
+    </ul-->
 	
     <!-- Links -->
   </div>
