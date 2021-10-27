@@ -2,9 +2,10 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
+use App\Entity\Student;
 use App\Entity\Subject;
 use App\Entity\Teacher;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -27,7 +28,16 @@ class SubjectType extends AbstractType
                 'label'=> "Description",
                 'required'=>true
             ])
-            // ->add('student')
+            ->add('student',EntityType::class,
+            [
+                'label'=>"Student",
+                'class'=>Student::class,
+                'choice_label'=>"name",
+                'multiple'=>True, // chon nhieu
+                'expanded'=>false,// dropdown / true: checkbok
+            ])
+
+
             ->add('category',EntityType::class,
             [
                 'label'=>"Category",

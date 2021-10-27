@@ -32,6 +32,14 @@
             }}
          </div>
          <div class="form-group">
+            {{ form_label (form.student) }}
+            {{ form_widget (form.student,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group">
             {{ form_label (form.teacher) }}
             {{ form_widget (form.teacher,
                {

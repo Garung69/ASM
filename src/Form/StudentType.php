@@ -42,7 +42,7 @@ class StudentType extends AbstractType
             [
                 'label'=>"Image",
                 'data_class'=> null, 
-                'required' => false
+                'required' => is_null($builder->getData()->getImage())
             ])
             ->add('email',TextType :: class,
             [
@@ -54,14 +54,14 @@ class StudentType extends AbstractType
                 'required'=>true,
                 'label' =>"PhoneNumber"
             ])
-            ->add('subjects',EntityType::class,
-            [
-                'label'=>"Subject",
-                'class'=> Subject::class,
-                'choice_label'=>"name",
-                'multiple'=>True, // chon nhieu
-                'expanded'=>false,// dropdown / true: checkbok
-            ])
+            // ->add('subjects',EntityType::class,
+            // [
+            //     'label'=>"Subject",
+            //     'class'=> Subject::class,
+            //     'choice_label'=>"name",
+            //     'multiple'=>True, // chon nhieu
+            //     'expanded'=>false,// dropdown / true: checkbok
+            // ])
         ;
     }
 

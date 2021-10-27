@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Student;
+use App\Entity\Subject;
 use PhpParser\Node\Name;
 use App\Form\StudentType;
 use Symfony\Component\HttpFoundation\Request;

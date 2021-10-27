@@ -30,7 +30,9 @@
             <td>{{teacher.email}}</td>
             <td>{{teacher.phone}}</td>
             <td>{{ teacher.dob|date('d/m/Y') }}</td>           
-            <td></td>
+            <td>
+            <a href="{{path('subject_detail',{'id':teacher.subject})}}"></a>
+            </td>
             <td>
             {% if is_granted('ROLE_ADMIN') %}
                <a class="btn btn-info" href="{{ path('teacher_edit', {'id': teacher.id }) }}">EDIT</a>

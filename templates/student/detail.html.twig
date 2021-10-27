@@ -16,7 +16,8 @@
            <th scope="col">Image</th>
            <th scope="col">Email</th>
            <th scope="col">PhoneNumber</th>
-           <th scope="col">Subject</th>
+             <th scope="col">Subjects</th>
+           
             {% if is_granted('ROLE_ADMIN') %}
             <th>Actions</th>
             {% else %}
@@ -35,13 +36,14 @@
             <td>{{student.email}}</td>
             <td>{{student.phone}}</td>
             <td>
-						{% for a in student.subjects %}
-							<a href="{{ path('subject_detail', {'id': a.id }) }}">
-								{{ a.name }}
-							</a>						
+            {% for m in student.subjects %}
+							<a href="{{ path('subject_detail', {'id': m.id }) }}">
+								{{ m.name }}
+							</a>
+							<br>
 						{% endfor %}
-					</td>
-            <td>
+            </td>
+            <td> 
             {% if is_granted('ROLE_ADMIN') %}
                <a class="btn btn-info" href="{{ path('student_edit', {'id': student.id }) }}">EDIT</a>
                <a class="btn btn-danger" href="{{ path('student_delete', {'id': student.id }) }}"

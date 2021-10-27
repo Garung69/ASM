@@ -12,7 +12,10 @@
            
             <th scope="col">Name</th>
             <th scope="col">Description</th>
-            {# <th scope="col">Subject</th> #}
+            <th scope="col">Teacher</th>
+             <th scope="col">Category</th>
+            <th scope="col">Students</th>
+
             {% if is_granted('ROLE_ADMIN') %}
             <th>Actions</th>
             {% else %}
@@ -23,14 +26,25 @@
           <tr>   
             <td>{{ subject.name }}</td>
             <td>{{subject.description}}</td>
-            {# <td>
-						{% for a in subject.students %}
-							<a href="{{ path('student_detail', {'id': a.id }) }}">
-								{{ a.name }}
+            <td>
+            <a href="{{ path('teacher_detail', {'id': subject.teacher.id })}}"> 
+						{{ subject.teacher.name }}
+						</a>
+            </td>
+            <td>
+            <a href="{{ path('category_detail', {'id': subject.category.id })}}"> 
+						{{ subject.category.name }}
+						</a>
+            </td>
+            <td>
+						{% for m in subject.student %}
+							<a href="{{ path('student_detail', {'id': m.id }) }}">
+								{{ m.name }}
 							</a>
 							<br>
 						{% endfor %}
-					</td> #}
+				</td>
+
             <td>
             {% if is_granted('ROLE_ADMIN') %}
                <a class="btn btn-success" href="{{ path('subject_edit', {'id': subject.id }) }}">EDIT</a>

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Subject;
+use App\Entity\Student;
 use App\Form\SubjectType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
