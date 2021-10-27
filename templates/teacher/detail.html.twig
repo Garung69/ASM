@@ -31,7 +31,12 @@
             <td>{{teacher.phone}}</td>
             <td>{{ teacher.dob|date('d/m/Y') }}</td>           
             <td>
-            <a href="{{path('subject_detail',{'id':teacher.subject})}}"></a>
+            {% for a in teacher.subjects %}
+							<a href="{{ path('subject_detail', {'id': a.id }) }}">
+								{{ a.name }}
+							</a>
+							<br>
+						{% endfor %}
             </td>
             <td>
             {% if is_granted('ROLE_ADMIN') %}
