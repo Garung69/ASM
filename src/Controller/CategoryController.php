@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
+use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
+use Doctrine\DBAL\Schema\ForeignKeyConstraint;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,14 +52,16 @@ class CategoryController extends AbstractController
     public function categoryDelete($id)
     {
         $category = $this->getDoctrine()->getRepository(Category::class)->find($id);
-        if ($category == null) {
+       
+             if ($category == null) {
             $this->addFlash('Error', 'CAtegory is not existed');
         } else {
             $manager = $this->getDoctrine()->getManager();
             $manager->remove($category);
             $manager->flush();
-            $this->addFlash('Success', 'Author has been deleted successfully !');
+            $this->addFlash('Success', 'Category has been deleted successfully !');
         }
+        
         return $this->redirectToRoute('category_index');
     }
 

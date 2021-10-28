@@ -167,6 +167,12 @@
 		{% endblock %}
 	</head>
 	<body>
+<style>
+  body {
+    background-image: url("https://wallpapercave.com/wp/wp4778521.jpg?fbclid=IwAR2-JCZRhr5rndcmBCwpzLLuD-iEjXFnZiETTyR67qAKdGXpzd4teoPjgbQ")
+  }
+  </style>
+
 	   {# tạo 1 section để hiển thị thông báo Flash gửi từ back-end (Controller) #}
 		<div class="container col-md-6 mt-3">
 			{% for message in app.flashes('Error') %}
